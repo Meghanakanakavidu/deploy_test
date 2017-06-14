@@ -48,14 +48,17 @@
 #  }
 #
 # The server-based syntax can be used to override options:
-# ------------------------------------
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: "user_name", # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: "please use keys"
-#   }
+# --------------------------------
+set :stage, :production
+ server "52.42.40.152",
+  user: "ubuntu",
+ roles: %w{web app db},
+ssh_options: {
+ user: "ubuntu", # overrides user setting above
+keys: %w(/home/ubuntu/cap3.pem),
+forward_agent: false,
+auth_methods: %w(publickey password),
+  password:  'cap3.pem',
+}
+
+
